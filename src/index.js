@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import store from './redux/store';
+import { Provider } from 'react-redux';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -11,11 +12,13 @@ import { UserProvider } from './context/UserContext';
 
 ReactDOM.render(
     <React.StrictMode>
-        <UserProvider>
-            <BrowserRouter>
-                <App />
-            </BrowserRouter>
-        </UserProvider>
+        <Provider store={store}>
+            <UserProvider>
+                <BrowserRouter>
+                    <App />
+                </BrowserRouter>
+            </UserProvider>
+        </Provider>
     </React.StrictMode>,
     document.getElementById('root'),
 );
